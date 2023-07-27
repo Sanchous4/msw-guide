@@ -2,7 +2,7 @@
 import {setupWorker} from 'msw';
 import {handlers} from './handlers';
 
-// This configures a Service Worker with the given request handlers.
+// This configures a Service Worker with the given request handlers for client part.
 export const browserWorker = setupWorker(...handlers);
 
 //!  self.registration.unregister() - remove it if create-react-app <= 3 version (public\mockServiceWorker.js)

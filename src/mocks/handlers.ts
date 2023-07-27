@@ -23,4 +23,10 @@ export const handlers = [
             })
         );
     }),
+
+    //* RegExp to match request url
+    // This request handler would match all these requests:
+    // - DELETE http://localhost:8080/posts/
+    // - DELETE https://backend.dev/user/posts/
+    rest.delete(/\/posts\//, () => {}),
 ];
