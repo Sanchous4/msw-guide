@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import {browserWorker} from './mocks/browser.ts';
+import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 
 declare global {
     interface Window {
@@ -67,10 +68,14 @@ const prepareMockServiceWorker = async () => {
 //* 2) Check out hash of config file if it is no corrupted don't recreate and start with this config
 //* 3) Track all clients that uses the worker with map if there are no clients then deactivate itself
 
+export const queryClient = new QueryClient();
+
 prepareMockServiceWorker().then(() => {
-    ReactDOM.createRoot(document.getElementById('root')!).render(
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
+    return ReactDOM.createRoot(document.getElementById('root')!).render(
+        <QueryClientProvider client={queryClient}>
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>
+        </QueryClientProvider>
     );
 });

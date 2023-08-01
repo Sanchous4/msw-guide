@@ -29,4 +29,9 @@ export const handlers = [
     // - DELETE http://localhost:8080/posts/
     // - DELETE https://backend.dev/user/posts/
     rest.delete(/\/posts\//, () => {}),
+
+    rest.get('/src/:path*', async (req, res, ctx) => {
+        const originalResponse = await ctx.fetch(req);
+        return res(ctx.json(originalResponse));
+    }),
 ];

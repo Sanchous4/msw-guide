@@ -1,4 +1,4 @@
-import {ReactComponent as MSWLogo} from '../public/mock-service-worker.svg';
+import {ReactComponent as MSWLogo} from './assets/mock-service-worker.svg';
 import './App.css';
 import {BrowserMockTesting} from './ui/browser-mock-testing/browser-mock-testing';
 
